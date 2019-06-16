@@ -1,0 +1,51 @@
+<!--  http://127.0.0.1:3000/vue/vue14.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第5章 条件渲染-用key属性管理可服用的元素</h1>
+
+
+
+<div id="key-div">
+    <div v-if="loginType=='username'">
+        <label>UserName</label>
+        <input placeholder="Please input username:" key="username"/>
+    </div>
+    <div v-else>
+        <label>Email</label>
+        <input placeholder="Please Input Email:" key="email"/>
+    </div>
+</div>
+
+<br>
+<button onclick="onClick1(this)">Switch login type</button>
+<script>
+
+    var app1 = new Vue({
+        el: "#key-div",
+        data: {
+            loginType:"username"
+        }
+    })
+
+    function onClick1(e) {
+        if (app1.loginType == "username")
+        {
+            app1.loginType = "email";
+        }
+        else
+        {
+            app1.loginType = "username";
+        }
+    }
+
+</script>
+
+</body>
+</html>

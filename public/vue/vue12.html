@@ -1,0 +1,35 @@
+<!--  http://127.0.0.1:3000/vue/vue12.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第5章 条件渲染-v-if指令和v-else指令</h1>
+
+<div id="if-div">
+    <h1 v-if="ok">Yes</h1>
+    <h1 v-else>No</h1>
+</div>
+
+<button onclick="onClick1(this)">if-else</button>
+
+<script>
+
+    var app1 = new Vue({
+        el: "#if-div",
+        data: {
+            ok:true
+        }
+    })
+    function onClick1(e){
+        app1.ok = !app1.ok;
+    }
+
+</script>
+
+</body>
+</html>

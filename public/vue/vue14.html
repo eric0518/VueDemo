@@ -1,0 +1,46 @@
+<!--  http://127.0.0.1:3000/vue/vue14.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第5章 条件渲染-v-else-if指令</h1>
+
+<div id="if-div">
+    <div v-if="value < 10">
+        Display A
+    </div>
+    <div v-else-if="value >= 10 && value < 20">
+        Display B
+    </div>
+    <div v-else-if="value >= 20 && value < 30">
+        Display C
+    </div>
+    <div v-else>
+        Don't Display A && B && C.
+    </div>
+</div>
+
+<button onclick="onClick1(this)">v-else-if</button>
+
+<script>
+
+    var app1 = new Vue({
+        el: "#if-div",
+        data: {
+            value:10
+        }
+    })
+
+    function onClick1(e){
+        app1.value = 40 * Math.random();
+    }
+
+</script>
+
+</body>
+</html>
