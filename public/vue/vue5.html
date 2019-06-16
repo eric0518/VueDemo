@@ -1,0 +1,80 @@
+<!--  http://127.0.0.1:3000/vue/vue5.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<h1>第2章 VUE模板-指令</h1>
+<script src="https://unpkg.com/vue"></script>
+
+<button id="button1" v-on:click="onClick1(this)">{{title}}</button>
+<button id="button2" @click="onClick2(this)">{{title}}</button>
+
+<div id="msg">
+    {{message}}
+</div>
+
+<div id="msg2" v-once v-html="html">
+</div>
+
+<table id="table" :border="border" :style="style">
+    <tr><td>Hello</td> <td>World</td></tr>
+</table>
+
+<script>
+    var app = new Vue({
+        el:"#msg",
+        data:{
+            message:"<h1> Hello world. </h1>"
+        }
+    })
+
+    var app2 = new Vue({
+        el: "#msg2",
+        data:{
+            html:"<h1>vhtml Hello World.</h1>"
+        }
+    })
+
+    var app3 = new Vue({
+        el: "#table",
+        data:{
+            border:"1",
+            style:"color:#00FF00"
+        }
+    })
+
+    new Vue({
+        el: "#button1",
+        data: {
+            title: "Dynamic Update Version 2"
+        },
+        methods: {
+            onClick1:function(event)
+            {
+                this.title = "Hello Vue Again"
+            }
+        }
+    })
+
+    new Vue({
+        el: "#button2",
+        data: {
+            title: "Dynamic Update Version 2"
+        },
+        methods: {
+            onClick2:function(event)
+            {
+                this.title = "Hello Vue Again"
+            }
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

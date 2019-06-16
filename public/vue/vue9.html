@@ -1,0 +1,94 @@
+<!--  http://127.0.0.1:3000/vue/vue8.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第3章 计算属性和Watch-计算属性的setter函数</h1>
+
+<button onclick="onClick(this)">Reverse String</button>
+<button onclick="onClick2(this)">Change Strings</button>
+<div id="reverse1">
+    <p>Original String : {{ msg }}</p>
+    <p>Reverse By Method : {{ reverseString }}</p>
+</div>
+
+<div id="reverse2">
+    <button onclick="onClick3(this)">Setting FullName</button>
+    <button onclick="onClick4(this)">Spliting FullName</button>
+    <p>FirstName : {{ firstName }}</p>
+    <p>LastName : {{ lastName }}</p>
+    <p>FullName : {{ fullName }}</p>
+</div>
+
+<script>
+
+    var reverse;
+    function onClick(e) {
+        reverse = new Vue({
+            el: "#reverse1",
+            data: {
+                msg: "I Love Vue."
+            },
+            computed: {
+                reverseString:{
+                    get:function()
+                    {
+                        console.log("getter called.")
+                        return this.msg.split('').reverse().join('');
+                    },
+                    set: function(val)
+                    {
+                        console.log("setter called.")
+                        this.msg = val.split('').reverse().join('');
+                    }
+                }
+            }
+        })
+    }
+
+    function onClick2(e) {
+        console.log("onClick1() called.")
+        reverse.reverseString = "abcde";
+    }
+
+    var reverse2;
+    function onClick3(e) {
+        reverse2 = new Vue({
+            el: "#reverse2",
+            data: {
+                firstName: "Bill",
+                lastName: "Gates"
+            },
+            computed: {
+                fullName:{
+                    get:function()
+                    {
+                        console.log("getter called.")
+                        return this.firstName + " " + this.lastName;
+                    },
+                    set: function(val)
+                    {
+                        console.log("setter called.")
+                        var names = val.split(" ");
+                        this.firstName = names[0];
+                        this.lastName = names[1];
+                    }
+                }
+            }
+        })
+    }
+
+    function onClick4(e)
+    {
+        reverse2.fullName = "Bill Clinton";
+    }
+
+</script>
+
+</body>
+</html>

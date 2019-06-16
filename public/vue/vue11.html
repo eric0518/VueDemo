@@ -1,0 +1,137 @@
+<!--  http://127.0.0.1:3000/vue/vue8.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第4章 绑定class和style属性-绑定style属性的多种方式</h1>
+
+
+<button onclick="onClick1(this)">Bind style1</button>
+<div id="dib_style1" v-bind:style="{'font-size' : fontSize + 'px', backgroundColor:backgroundColor, color: color }">
+    Hello World!
+</div>
+
+<br>
+
+<button onclick="onClick2(this)">Bind Object</button>
+<div id="div_style2" v-bind:style="styleObject">
+    Bind a Object
+</div>
+
+<br>
+
+<button onclick="onClick3(this)">Bind a Dependent Object</button>
+<div id="div_style3" v-bind:style="styleObject">
+    Bind a Dependent Object
+</div>
+
+<br>
+
+<button onclick="onClick4(this)">Bind a Object Array</button>
+<div id="div_style4" v-bind:style="[style1, style2]">
+    Bind a Object Arrray
+</div>
+
+<script>
+
+    var app1 = new Vue({
+        el: "#dib_style1",
+        data:{
+            fontSize: 30,
+            backgroundColor: "blue",
+            color:"yellow"
+        }
+    })
+    function onClick1(e)
+    {
+        if (app1.backgroundColor == "blue")
+        {
+            app1.backgroundColor = "green";
+        }
+        else
+        {
+            app1.backgroundColor = "blue";
+        }
+    }
+
+    var app2 = new Vue({
+        el: "#div_style2",
+        data:{
+            styleObject:{
+                fontSize: "30px",
+                backgroundColor: "blue",
+                color:"yellow"
+            }
+        }
+    })
+
+    function onClick2(e){
+        if (app2.styleObject.color == "yellow")
+        {
+            app2.styleObject.color = "red";
+        }
+        else
+        {
+            app2.styleObject.color = "yellow";
+        }
+    }
+
+    var obj = {
+        fontSize: "30px",
+        backgroundColor: "yellow",
+        color: "white"
+    }
+
+    var app3 = new Vue({
+        el: "#div_style3",
+        data:{
+            styleObject:obj
+        }
+    })
+
+    function onClick3(e){
+        if (obj.color == "white")
+        {
+            obj.color = "red";
+        }
+        else
+        {
+            obj.color = "white";
+        }
+    }
+
+    var app4 = new Vue({
+        el:"#div_style4",
+        data: {
+            style1:{
+                backgroundColor:"blue",
+                fontSize:"30px"
+            },
+            style2:{
+                color:"red"
+            }
+        }
+    })
+
+    function onClick4(e)
+    {
+        if (app4.style2.color == "red")
+        {
+            app4.style2.color = "green";
+        }
+        else
+        {
+            app4.style2.color = "red";
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

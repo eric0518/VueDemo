@@ -1,0 +1,136 @@
+<!--  http://127.0.0.1:3000/vue/vue8.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第4章 绑定class和style属性-绑定class属性的多种方式</h1>
+
+<style>
+    .common {
+        background-color: blue;
+    }
+
+    .style1 {
+        font-size: 30px;
+        color:yellow;
+    }
+
+    .style2 {
+        font-size: 50px;
+        color:red;
+    }
+</style>
+<button onClick="onClick1(this)">Bind Directly</button>
+<div id="div_class1" v-bind:class="myClass">
+    Hello World!
+</div>
+
+<br>
+
+<div id="div_class2" class="common" v-bind:class="{ style1:isActive1, style2:isActive2 }">
+    Hello World V2!
+</div>
+<button onClick="onClick2(this)">Bind Property</button>
+
+<br>
+
+<div id="div_class3" v-bind:class="classObject">
+    Hello World V3!
+</div>
+<button onclick="onClick3(this)">Bind Object</button>
+
+<br>
+
+<div id="div_class4" v-bind:class="[c1, c2]">
+    Hello World V4!
+</div>
+<button onclick="onClick4(this)">Bind Array</button>
+<script>
+
+    var app1 = new Vue({
+        el:"#div_class1",
+        data: {
+            myClass: "common style1"
+        }
+    })
+
+    function onClick1(e) {
+        if (app1.myClass.indexOf("style1") < 0)
+        {
+            app1.myClass = "common style1";
+        }
+        else
+        {
+            app1.myClass = "common style2";
+        }
+    }
+
+    var app2 = new Vue({
+        el: "#div_class2",
+        data:{
+            isActive1: true,
+            isActive2: false
+        }
+    })
+
+    function onClick2(e)
+    {
+        app2.isActive1 = !app2.isActive1;
+        app2.isActive2 = !app2.isActive2;
+    }
+
+    var app3 = new Vue({
+        el: "#div_class3",
+        data:{
+            classObject:{
+                common:true,
+                style1:true,
+                style2:false
+            }
+        }
+    })
+
+    function onClick3(e)
+    {
+        if (app3.classObject.style1)
+        {
+            app3.classObject.style1 = false;
+            app3.classObject.style2 = true;
+        }
+        else
+        {
+            app3.classObject.style1 = true;
+            app3.classObject.style2 = false;
+        }
+    }
+
+    var app4 = new Vue({
+        el : "#div_class4",
+        data: {
+            c1 : "common",
+            c2 : "style1"
+        }
+    })
+
+    function onClick4(e){
+        if (app4.c2.indexOf("style1") < 0)
+        {
+            app4.c2 = "common";
+            app4.c2 = "style1";
+        }
+        else
+        {
+            app4.c2 = "common";
+            app4.c2 = "style2";
+        }
+
+    }
+</script>
+
+</body>
+</html>

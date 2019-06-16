@@ -1,0 +1,66 @@
+<!--  http://127.0.0.1:3000/vue/vue8.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第3章 计算属性和Watch-使用watch属性观察和响应Vue实例的数据变化</h1>
+
+<button onclick="onClick(this)">Reverse String</button>
+<button onclick="onClick2(this)">Change Strings</button>
+<div id="reverse1">
+    <p>Original String : {{ msg }}</p>
+    <p>Reverse By Method : {{ reverseMethod() }}</p>
+    <p>Reverse By Compute Property : {{ reverseString }}</p>
+    <p>Full Nam By Watch : {{ fullName }}</p>
+</div>
+
+<script>
+
+    var reverse;
+    function onClick(e) {
+        reverse = new Vue({
+            el: "#reverse1",
+            data: {
+                msg: "I Love Vue.",
+                firstName: "Bill",
+                lastName: "Gates",
+                fullName : "Bill Gates"
+            },
+            methods:{
+                reverseMethod:function(){
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+            computed: {
+                reverseString: function() {
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+            watch:{
+                firstName: function(val)
+                {
+                    this.fullName = val + " " + this.lastName;
+                },
+                lastName: function(val)
+                {
+                    this.fullName = this.firstName + " " + val;
+                }
+
+            }
+        })
+    }
+
+    function onClick2(e) {
+        console.log("onClick1() called.")
+        reverse.firstName = "Clinton";
+    }
+
+</script>
+
+</body>
+</html>

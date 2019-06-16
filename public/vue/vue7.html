@@ -1,0 +1,45 @@
+<!--  http://127.0.0.1:3000/vue/vue7.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第3章 计算属性和Watch-使用方法简化插值表达式</h1>
+
+<button onclick="onClick(this)">Reverse String</button>
+<div id="reverse1">
+    <p>Original String : {{ msg }}</p>
+    <p>Reverse By Method : {{ reverseMethod() }}</p>
+    <p>Reverse By Compute Property : {{ reverseString }}</p>
+</div>
+
+<script>
+
+    var reverse;
+    function onClick(e) {
+        new Vue({
+            el: "#reverse1",
+            data: {
+                msg: "I Love Vue."
+            },
+            methods:{
+                reverseMethod:function(){
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+            computed: {
+                reverseString: function() {
+                    return this.msg.split('').reverse().join('');
+                }
+            }
+        })
+    }
+
+</script>
+
+</body>
+</html>

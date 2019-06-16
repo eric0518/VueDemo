@@ -1,0 +1,64 @@
+<!--  http://127.0.0.1:3000/vue/vue3.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<h1>第1章 VUE基础-VUE的生命周</h1>
+<script src="https://unpkg.com/vue"></script>
+<button onclick="onClick1(this)">Using Vue Object to Update</button>
+<button onclick="onClick2(this)">Using Obj to Update</button>
+<button onclick="onClick3(this)">Destroy Vue</button>
+<div id="msg">
+    <li>{{name}}</li>
+    <li>{{company}}</li>
+    <li>{{website}}</li>
+</div>
+
+<script>
+    var obj = { name : "李宁", company:"欧瑞科技", website:"http://www.ourui.com" }
+    var app = new Vue({
+        el:"#msg",
+        data:obj,
+        created:function()
+        {
+            console.log("created" + this.name);
+        },
+        mounted: function()
+        {
+            console.log("monuted() called.")
+        },
+        updated: function()
+        {
+            console.log("Updated() called.")
+        },
+        destroyed: function()
+        {
+            console.log("Destroy() called.")
+        }
+    })
+
+    function onClick1(e)
+    {
+        app.name = "王军";
+        app.company = "百度";
+        app.website = "http://www.baidu.com";
+    }
+
+    function onClick2(e)
+    {
+        obj.name = "雷军";
+        obj.company = "小米";
+        obj.website = "https://www.xiaomi.com";
+    }
+
+    function onClick3(e)
+    {
+        app.$destroy();
+    }
+</script>
+</body>
+</html>
