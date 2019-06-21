@@ -1,0 +1,46 @@
+<!--  http://127.0.0.1:3000/vue/vue75.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第7章 事件处理-5.监听键盘鼠标响应事件</h1>
+
+<div id="div1">
+    <input v-model="message" @Keyup.13 = "returnMethod">
+    <input v-model="message" @Keyup.shift.13 = "returnMethod">
+    <input v-model="message" @Keyup.ctrl.13 = "returnMethod">
+    <br>
+    <p>capturing mouse left button</p>
+    <input v-model="message" @mousedown.left = "returnMethod">
+
+    <p>capturing mouse left button + ctrl</p>
+    <input v-model="message" @mousedown.left.ctrl = "returnMethod">
+
+
+</div>
+
+<script>
+
+    var app1 = new Vue({
+        el : "#div1",
+        data: {
+            message:""
+        },
+        methods:{
+            returnMethod: function(event)
+            {
+                alert(this.message);
+            }
+        }
+    })
+
+
+</script>
+
+</body>
+</html>

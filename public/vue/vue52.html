@@ -1,0 +1,45 @@
+<!--  http://127.0.0.1:3000/vue/vue52.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第5章 条件渲染-2.渲染多个元素</h1>
+
+<div id="if-div">
+    <template v-if="flag">
+        <button>Click to Detail</button>
+        <form method="post" action="/test">
+            <p>First Name: <input tyle="text" name="fname" /></p>
+            <p>Last Name: <input tyle="text" name="lname" /></p>
+            <input type="submit" value="Submit" />
+        </form>
+    </template>
+    <button v-else>Click to Quit</button>
+</div>
+
+<br>
+
+<button onclick="onClick1(this)">if-else-template</button>
+
+<script>
+
+    var app1 = new Vue({
+        el: "#if-div",
+        data: {
+            flag:true
+        }
+    })
+
+    function onClick1(e){
+        app1.flag = !app1.flag;
+    }
+
+</script>
+
+</body>
+</html>

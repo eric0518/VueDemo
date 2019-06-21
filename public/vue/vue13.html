@@ -7,39 +7,34 @@
 </head>
 
 <body>
+<h1>第1章 VUE基础-3.VUE外部数据同步</h1>
 <script src="https://unpkg.com/vue"></script>
-<h1>第5章 条件渲染-渲染多个元素</h1>
-
-<div id="if-div">
-    <template v-if="flag">
-        <button>Click to Detail</button>
-        <form method="post" action="/test">
-            <p>First Name: <input tyle="text" name="fname" /></p>
-            <p>Last Name: <input tyle="text" name="lname" /></p>
-            <input type="submit" value="Submit" />
-        </form>
-    </template>
-    <button v-else>Click to Quit</button>
+<button onclick="onClick1(this)">Using Vue Object to Update</button>
+<button onclick="onClick2(this)">Using Obj to Update</button>
+<div id="msg">
+    <li>{{name}}</li>
+    <li>{{company}}</li>
+    <li>{{website}}</li>
 </div>
 
-<br>
-
-<button onclick="onClick1(this)">if-else-template</button>
-
 <script>
-
-    var app1 = new Vue({
-        el: "#if-div",
-        data: {
-            flag:true
-        }
+    var obj = { name : "李宁", company:"欧瑞科技", website:"http://www.ourui.com" }
+    var app = new Vue({
+        el:"#msg",
+        data:obj
     })
 
     function onClick1(e){
-        app1.flag = !app1.flag;
+        app.name = "王军";
+        app.company = "百度";
+        app.website = "http://www.baidu.com";
     }
 
+    function onClick2(e){
+        obj.name = "雷军";
+        obj.company = "小米";
+        obj.website = "https://www.xiaomi.com";
+    }
 </script>
-
 </body>
 </html>

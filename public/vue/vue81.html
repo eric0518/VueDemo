@@ -1,0 +1,37 @@
+<!--  http://127.0.0.1:3000/vue/vue81.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第8章 绑定表单数组-1.单行和多行文本组件</h1>
+
+<form id="vue_form" action="/vueForm">
+    <label>Name</label>
+    <input name = "msg" placeholder="Please Input Name" v-model="message" />
+    <p>Message is {{message}}</p>
+    <span>multiple line text</span>
+    <p style="white-space:pre-line"> {{message1}}</p>
+    <br>
+    <textarea v-model="message1" name="multiMsg" placeholder="Multiple line text"></textarea>
+    <input type="submit" value="Submit" />
+</form>
+
+<script>
+
+var app1 = new Vue({
+    el:"#vue_form",
+    data:{
+        message:"",
+        message1:""
+    }
+})
+
+</script>
+
+</body>
+</html>

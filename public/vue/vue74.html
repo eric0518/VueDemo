@@ -1,0 +1,49 @@
+<!--  http://127.0.0.1:3000/vue/vue74.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第7章 事件处理-4.通过v-on和v-for指令为列表项添加事件</h1>
+
+<ul id="id-ul">
+    <li v-for="(item, index) in memeberList" @click="memberDetails(index)">
+        <span>{{item.custName}}</span>
+    </li>
+</ul>
+
+<script>
+
+    var app1 = new Vue({
+        el:"#id-ul",
+        data:{
+            memeberList:[
+                {custName:"Bill", age: 30, joinTime:"2019-01-01", custId: 1},
+                {custName:"Home", age: 30, joinTime:"2019-01-01", custId: 1},
+                {custName:"Jim", age: 30, joinTime:"2019-01-01", custId: 1},
+                {custName:"Tom", age: 30, joinTime:"2019-01-01", custId: 1},
+                {custName:"John", age: 30, joinTime:"2019-01-01", custId: 1}
+            ]
+        },
+        methods:{
+            memberDetails:function(index)
+            {
+                alert("custName: " + this.memeberList[index].custName + "\r\n" +
+                      "age: " + this.memeberList[index].age + "\r\n" +
+                      "joinTime: " + this.memeberList[index].joinTime + "\r\n" +
+                      "custId: " + this.memeberList[index].custId);
+            }
+        }
+    })
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!--  http://127.0.0.1:3000/vue/vue71.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第7章 事件处理-1.使用v-on指令直接指定JS代码</h1>
+
+<div id="div1">
+    <button onclick="onClick1(this)">Add 1</button>
+    <p>added {{counter}} times</p>
+</div>
+
+<br>
+
+<div id="div2">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>added {{counter}} times</p>
+</div>
+
+<script>
+
+    var app1 = new Vue({
+        el:"#div1",
+        data:{
+            counter: 0
+        }
+    })
+    function onClick1(e)
+    {
+        app1.counter ++;
+    }
+
+    var app2 = new Vue({
+        el:"#div2",
+        data:{
+            counter: 0
+        }
+    })
+
+
+</script>
+
+</body>
+</html>

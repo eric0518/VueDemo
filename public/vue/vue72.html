@@ -1,0 +1,59 @@
+<!--  http://127.0.0.1:3000/vue/vue72.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第7章 事件处理-2.使用v-on指令绑定方法JS代码</h1>
+
+<div id="div1">
+    <button onclick="onClick1(this)">
+        {{greetStr}}
+    </button>
+</div>
+
+<div id="div2">
+    <button v-on:click="greet">
+        {{greetStr}}
+    </button>
+</div>
+
+<script>
+
+    var app1 = new Vue({
+        el:"#div1",
+        data: {
+            greetStr:"Hello by Traditional Method.",
+            name: "Li Ning"
+        }
+    })
+
+    function onClick1(e)
+    {
+        alert("Hello " + app1.name );
+    }
+
+    var app2 = new Vue({
+        el:"#div2",
+        data:{
+            greetStr:"Hello by vo-on Direct.",
+            name: "Li Ning"
+        },
+        methods:{
+            greet: function(evetn)
+            {
+                alert("Hello " + this.name)
+            }
+        }
+    })
+
+
+
+</script>
+
+</body>
+</html>
