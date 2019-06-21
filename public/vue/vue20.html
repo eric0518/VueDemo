@@ -1,0 +1,45 @@
+<!--  http://127.0.0.1:3000/vue/vue20.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第6章 列表渲染-4.使用v-for指令遍历对象属性</h1>
+
+<ul id="v-for-object">
+    <li v-for="(value, key, index) in object">
+        {{index}} - {{key}} : {{value}}
+    </li>
+</ul>
+
+<button onclick="onClick1(this)">Added Property</button>
+<button onclick="onClick2(this)">Modify Property</button>
+
+<script>
+
+    var app = new Vue({
+        el:"#v-for-object",
+        data:{
+            object:{
+                FirstName : "Bill",
+                LastName : "Gates",
+                Age: 56
+            }
+        }
+    })
+
+    function onClick1(e) {
+        Vue.set(app.object, "Salary", 100000)
+    }
+
+    function onClick2(e) {
+        Vue.set(app.object, "FirstName", "Clinton");
+    }
+</script>
+
+</body>
+</html>

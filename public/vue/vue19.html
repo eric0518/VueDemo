@@ -1,0 +1,46 @@
+<!--  http://127.0.0.1:3000/vue/vue19.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第6章 列表渲染-3.用对象数组动态生成列表</h1>
+
+<ul id="list">
+    <li v-for="item in items">
+        name:{{item.name}} <br> age:{{item.age}}
+    </li>
+</ul>
+
+<button onclick="onClick1(this)">Modify List</button>
+<button onclick="onClick2(this)">Append List</button>
+<script>
+
+    var app = new Vue({
+        el:"#list",
+        data: {
+            items: [
+                {name: "Mike", age: 30},
+                {name: "Jim", age: 45},
+                {name: "Tom", age: 50}
+            ]
+        }
+    })
+
+
+    function onClick1(e) {
+        Vue.set(app.items, 0, {name:"Mike", age: 35});
+    }
+
+    function onClick2(e) {
+        Vue.set(app.items, app.items.length, {name:"Eric", age: 18})
+    }
+
+</script>
+
+</body>
+</html>

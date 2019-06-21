@@ -1,0 +1,46 @@
+<!--  http://127.0.0.1:3000/vue/vue18.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue"></script>
+<h1>第6章 列表渲染-2.动态修改列表项</h1>
+
+<ul id="list1">
+    <li v-for="item in items">
+        {{item}}
+    </li>
+</ul>
+<button onclick="onClick1(this)">Modify List</button>
+<button onclick="onClick2(this)">Append List</button>
+<script>
+
+    var app1 = new Vue({
+        el: "#list1",
+        data:{
+            items:[
+                "Java",
+                "Python",
+                "PHP",
+                "CPP"
+            ]
+            }
+    })
+
+    function onClick1(e){
+        Vue.set(app1.items, 0, "Swift");
+    }
+
+    function onClick2(e){
+        Vue.set(app1.items, app1.items.length, "Kotlin");
+    }
+
+
+</script>
+
+</body>
+</html>
